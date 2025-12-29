@@ -1,0 +1,159 @@
+<div
+  id="app-sidebar-colored"
+  class="w-[280px] bg-primary h-screen hidden lg:block shrink-0 absolute lg:static left-0 top-0 z-10 select-none"
+>
+  <div class="flex flex-col h-full">
+    <div class="p-4 flex items-center gap-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="43"
+        height="43"
+        viewBox="0 0 43 43"
+        fill="none"
+        class="w-10 h-10"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M21.5 42.0498C33.098 42.0498 42.5 32.6477 42.5 21.0498C42.5 9.45183 33.098 0.0498047 21.5 0.0498047C9.902 0.0498047 0.5 9.45183 0.5 21.0498C0.5 32.6477 9.902 42.0498 21.5 42.0498ZM28.0513 9.83248C28.3702 8.69975 27.2709 8.02994 26.267 8.74516L12.2528 18.7288C11.164 19.5045 11.3353 21.0498 12.51 21.0498H16.2003V21.0212H23.926L17.5323 23.089L14.9487 32.2671C14.6299 33.3999 15.729 34.0697 16.733 33.3544L30.7472 23.3708C31.836 22.5951 31.6646 21.0498 30.49 21.0498H24.8937L28.0513 9.83248Z"
+          class="fill-primary-contrast"
+        />
+      </svg>
+      <span class="text-lg font-semibold leading-tight text-primary-contrast">ZenTrail</span>
+    </div>
+    <nav class="overflow-y-auto flex-1 p-2 flex flex-col gap-4" aria-label="Main navigation">
+      <ul class="list-none m-0 flex flex-col">
+        <li>
+          <div
+            pStyleClass="@next"
+            enterFromClass="hidden"
+            enterActiveClass="animate-slidedown"
+            leaveToClass="hidden"
+            leaveActiveClass="animate-slideup"
+            class="flex items-center cursor-pointer p-3 gap-4 rounded-lg text-surface-0 hover:bg-primary-emphasis transition-colors duration-150"
+          >
+            <span class="font-semibold text-base leading-tight text-primary-contrast">Home</span>
+            <i class="pi pi-angle-down text-base! leading-none! text-primary-contrast ml-auto" aria-hidden="true"></i>
+          </div>
+          <ul class="list-none p-0 m-0 overflow-hidden flex flex-col gap-1">
+            <li>
+              <a
+                routerLink="/dashboard"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-home text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/bookmarks"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-bookmark text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Bookmarks</span>
+                <p-badge
+                  value="3"
+                  severity="contrast"
+                  class="ml-auto h-5! min-w-5! text-xs! font-bold! leading-tight! rounded-xl! bg-primary-contrast text-primary"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/team"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-users text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Team</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/messages"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-inbox text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Messages</span>
+                <p-badge
+                  value="1"
+                  severity="contrast"
+                  class="ml-auto h-5! min-w-5! text-xs! font-bold! leading-tight! rounded-xl! bg-primary-contrast text-primary"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/calendar"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-calendar text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Calendar</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <hr class="border-t border-primary-400 dark:border-primary-300 my-0" />
+      <ul class="list-none m-0 flex flex-col gap-1">
+        <li>
+          <div
+            pStyleClass="@next"
+            enterFromClass="hidden"
+            enterActiveClass="animate-slidedown"
+            leaveToClass="hidden"
+            leaveActiveClass="animate-slideup"
+            class="flex items-center cursor-pointer p-3 gap-4 rounded-lg text-surface-0 hover:bg-primary-emphasis transition-colors duration-150"
+          >
+            <span class="font-semibold text-base leading-tight text-primary-contrast">Organization</span>
+            <i class="pi pi-angle-down text-base! leading-none! text-primary-contrast ml-auto" aria-hidden="true"></i>
+          </div>
+          <ul class="list-none p-0 m-0 overflow-hidden flex flex-col gap-1">
+            <li>
+              <a
+                routerLink="/overview"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-sitemap text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Overview</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/domains"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-globe text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Domains</span>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/reports"
+                routerLinkActive="bg-primary-emphasis"
+                class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+              >
+                <i class="pi pi-copy text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+                <span class="font-medium text-base leading-tight">Reports</span>
+                <p-badge
+                  value="4"
+                  severity="contrast"
+                  class="ml-auto h-5! min-w-5! text-xs! font-bold! leading-tight! rounded-xl! bg-primary-contrast text-primary"
+                />
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <app-user-menu />
+  </div>
+</div>

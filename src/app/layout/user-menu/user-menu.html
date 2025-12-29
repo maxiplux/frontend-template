@@ -1,0 +1,46 @@
+<div class="py-2 mt-auto border-t border-primary-400 dark:border-primary-300">
+  <ul class="list-none p-2 m-0 hidden animate-duration-150 overflow-hidden">
+    <li>
+      <a
+        routerLink="/profile"
+        class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+      >
+        <i class="pi pi-user text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+        <span class="font-medium text-base leading-tight">Profile</span>
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/settings"
+        class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150"
+      >
+        <i class="pi pi-cog text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+        <span class="font-medium text-base leading-tight">Settings</span>
+      </a>
+    </li>
+    <li>
+      <button
+        type="button"
+        (click)="signOut()"
+        class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-primary-contrast hover:bg-primary-emphasis transition-colors duration-150 w-full bg-transparent border-none text-left"
+      >
+        <i class="pi pi-sign-out text-base! leading-none! text-primary-contrast" aria-hidden="true"></i>
+        <span class="font-medium text-base leading-tight">Sign Out</span>
+      </button>
+    </li>
+  </ul>
+  <button
+    type="button"
+    pStyleClass="@prev"
+    enterFromClass="hidden"
+    enterActiveClass="animate-slidedown"
+    leaveToClass="hidden"
+    leaveActiveClass="animate-slideup"
+    class="flex items-center cursor-pointer p-2 gap-2 text-primary-contrast w-full bg-transparent border-none"
+    aria-label="Toggle user menu"
+  >
+    <img [src]="currentUser().avatar" [alt]="currentUser().name" class="w-8 h-8 rounded-full" />
+    <span class="font-medium text-base leading-tight">{{ currentUser().name }}</span>
+    <i class="pi pi-angle-up text-base! leading-none! text-primary-contrast ml-auto" aria-hidden="true"></i>
+  </button>
+</div>

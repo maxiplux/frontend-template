@@ -1,0 +1,29 @@
+<header class="flex justify-between items-center py-4 px-8 bg-surface-0 dark:bg-surface-900 border-b border-surface-200 dark:border-surface-700 relative lg:static">
+  <div class="flex items-center">
+    <button
+      type="button"
+      pStyleClass="#app-sidebar-colored"
+      enterFromClass="hidden"
+      enterActiveClass="animate-fadeinleft"
+      leaveToClass="hidden"
+      leaveActiveClass="animate-fadeoutleft"
+      [hideOnOutsideClick]="true"
+      [hideOnResize]="true"
+      resizeSelector=".resize-container-2"
+      class="cursor-pointer block lg:hidden text-surface-700 dark:text-surface-100 mr-4 bg-transparent border-none"
+      aria-label="Toggle sidebar menu"
+    >
+      <i class="pi pi-bars text-xl!" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="flex items-center gap-8">
+    <button type="button" class="bg-transparent border-none cursor-pointer" aria-label="Notifications">
+      <i class="pi pi-bell text-lg! leading-none! text-surface-500 dark:text-surface-400" aria-hidden="true"></i>
+    </button>
+    <img
+      [src]="currentUser().avatar"
+      [alt]="currentUser().name + ' avatar'"
+      class="w-8 h-8 rounded-full cursor-pointer"
+    />
+  </div>
+</header>
