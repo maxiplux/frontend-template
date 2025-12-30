@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { BadgeModule } from 'primeng/badge';
 import { StyleClassModule } from 'primeng/styleclass';
-import { UserMenu } from '../user-menu/user-menu';
 import { UserService } from '../../core/services/user.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { UserService } from '../../core/services/user.service';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive, BadgeModule, StyleClassModule, UserMenu],
+  imports: [RouterLink, RouterLinkActive, BadgeModule, StyleClassModule],
 })
 export class Sidebar {
   private readonly userService = inject(UserService);
