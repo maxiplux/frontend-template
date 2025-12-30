@@ -224,6 +224,7 @@ setTheme(theme: Theme): void     // Set specific theme
   --muted: #64748b;    /* Slate 500 - Muted text */
   --accent: #0ea5e9;   /* Sky 500 - Accent */
   --border: #e2e8f0;   /* Slate 200 - Borders */
+  --hover: #f1f5f9;    /* Slate 100 - Hover states */
 }
 ```
 
@@ -238,6 +239,7 @@ setTheme(theme: Theme): void     // Set specific theme
   --muted: #94a3b8;    /* Slate 400 - Muted text */
   --accent: #38bdf8;   /* Sky 400 - Accent */
   --border: #334155;   /* Slate 700 - Borders */
+  --hover: #334155;    /* Slate 700 - Hover states */
 }
 ```
 
