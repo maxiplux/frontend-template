@@ -1,4 +1,6 @@
-<header class="flex justify-between items-center py-4 px-8 bg-surface-0 dark:bg-surface-900 border-b border-surface-200 dark:border-surface-700 relative lg:static">
+<header
+  class="flex justify-between items-center py-4 px-4 md:px-8 bg-white border-b border-surface-200 relative lg:static"
+>
   <div class="flex items-center">
     <button
       type="button"
@@ -10,20 +12,80 @@
       [hideOnOutsideClick]="true"
       [hideOnResize]="true"
       resizeSelector=".resize-container-2"
-      class="cursor-pointer block lg:hidden text-surface-700 dark:text-surface-100 mr-4 bg-transparent border-none"
+      class="cursor-pointer flex items-center justify-center lg:hidden text-surface-700 mr-4 bg-transparent border-none p-2 w-10 h-10"
       aria-label="Toggle sidebar menu"
     >
-      <i class="pi pi-bars text-xl!" aria-hidden="true"></i>
+      <i class="pi pi-bars text-2xl" aria-hidden="true"></i>
     </button>
   </div>
-  <div class="flex items-center gap-8">
-    <button type="button" class="bg-transparent border-none cursor-pointer" aria-label="Notifications">
-      <i class="pi pi-bell text-lg! leading-none! text-surface-500 dark:text-surface-400" aria-hidden="true"></i>
+  <div class="flex items-center gap-4 md:gap-8">
+    <div class="flex items-center gap-2">
+      <i class="pi pi-sun text-base text-surface-500" aria-hidden="true"></i>
+      <p-toggleswitch
+        [ngModel]="themeService.isDark()"
+        (ngModelChange)="themeService.setTheme($event ? 'dark' : 'light')"
+        ariaLabel="Toggle dark mode"
+      />
+      <i class="pi pi-moon text-base text-surface-500" aria-hidden="true"></i>
+    </div>
+    <button
+      type="button"
+      class="bg-transparent border-none cursor-pointer"
+      aria-label="Notifications"
+    >
+      <i
+        class="pi pi-bell text-lg! leading-none! text-surface-500"
+        aria-hidden="true"
+      ></i>
     </button>
-    <img
-      [src]="currentUser().avatar"
-      [alt]="currentUser().name + ' avatar'"
-      class="w-8 h-8 rounded-full cursor-pointer"
-    />
+
+    <div class="relative">
+      <ul class="list-none p-2 m-0 hidden absolute right-0 top-full mt-2 bg-white border border-surface-200 rounded-lg shadow-lg min-w-[200px] z-50">
+        <li>
+          <a
+            routerLink="/profile"
+            class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-surface-700 hover:bg-surface-100 transition-colors duration-150"
+          >
+            <i class="pi pi-user text-base! leading-none! text-surface-700" aria-hidden="true"></i>
+            <span class="font-medium text-base leading-tight">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/settings"
+            class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-surface-700 hover:bg-surface-100 transition-colors duration-150"
+          >
+            <i class="pi pi-cog text-base! leading-none! text-surface-700" aria-hidden="true"></i>
+            <span class="font-medium text-base leading-tight">Settings</span>
+          </a>
+        </li>
+        <li>
+          <button
+            type="button"
+            (click)="signOut()"
+            class="flex items-center cursor-pointer p-3 gap-2 rounded-lg text-surface-700 hover:bg-surface-100 transition-colors duration-150 w-full bg-transparent border-none text-left"
+          >
+            <i class="pi pi-sign-out text-base! leading-none! text-surface-700" aria-hidden="true"></i>
+            <span class="font-medium text-base leading-tight">Sign Out</span>
+          </button>
+        </li>
+      </ul>
+
+      <button
+        type="button"
+        pStyleClass="@prev"
+        enterFromClass="hidden"
+        enterActiveClass="animate-slidedown"
+        leaveToClass="hidden"
+        leaveActiveClass="animate-slideup"
+        [hideOnOutsideClick]="true"
+        class="flex items-center cursor-pointer gap-2 text-surface-700 bg-transparent border-none p-2 rounded-lg hover:bg-surface-100 transition-colors duration-150"
+        aria-label="Toggle user menu"
+      >
+        <img [src]="currentUser().avatar" [alt]="currentUser().name" class="w-8 h-8 rounded-full" />
+        <span class="font-medium text-base leading-tight hidden md:block">{{ currentUser().name }}</span>
+        <i class="pi pi-angle-down text-base! leading-none! text-surface-700" aria-hidden="true"></i>
+      </button>
+    </div>
   </div>
 </header>
