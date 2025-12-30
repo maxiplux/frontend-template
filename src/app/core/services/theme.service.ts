@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, PLATFORM_ID, effect } from '@angular/core';
+import { inject, Injectable, signal, PLATFORM_ID, effect, DestroyRef } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 export type Theme = 'light' | 'dark';
@@ -10,6 +10,7 @@ export class ThemeService {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+  private readonly destroyRef = inject(DestroyRef);
 
   /** Current theme state */
   readonly theme = signal<Theme>(this.getInitialTheme());
@@ -28,10 +29,17 @@ export class ThemeService {
     // Listen for system preference changes
     if (this.isBrowser) {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', (e) => {
+      const handleChange = (e: MediaQueryListEvent) => {
         if (!this.getSavedPreference()) {
           this.theme.set(e.matches ? 'dark' : 'light');
         }
+      };
+
+      mediaQuery.addEventListener('change', handleChange);
+
+      // Clean up event listener on service destruction
+      this.destroyRef.onDestroy(() => {
+        mediaQuery.removeEventListener('change', handleChange);
       });
     }
   }
