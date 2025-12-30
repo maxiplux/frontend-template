@@ -191,6 +191,16 @@ The application uses a custom theme service (`ThemeService`) with signal-based s
 - **System Preference**: Automatically detects and respects OS theme preference
 - **Persistence**: Theme choice persists across sessions
 
+#### Visual Examples
+
+Below are examples of how the application must look in both light and dark modes:
+
+##### Light Mode
+![Light Mode](./light.png)
+
+##### Dark Mode
+![Dark Mode](./dark.png)
+
 #### ThemeService API
 
 ```typescript
