@@ -32,13 +32,14 @@
 
 /* Light Theme */
 :root {
-    --bg: #f8fafc;
+    --bg: #fcf8f8;
     --sidebar: #ffffff;
     --card: #ffffff;
     --text: #0f172a;
     --muted: #64748b;
     --accent: #0ea5e9;
     --border: #e2e8f0;
+    --hover: #f1f5f9;
 }
 
 /* Dark Theme */
@@ -50,4 +51,5 @@
     --muted: #94a3b8;
     --accent: #38bdf8;
     --border: #334155;
+    --hover: #334155;
 }
