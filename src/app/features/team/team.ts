@@ -20,7 +20,7 @@ import { PageHeader } from '../../shared/components/page-header/page-header';
 })
 export class Team {
     checked: boolean = true;
-    selectedCountry: any = null;
+    selectedCountry: { name: string; code: string } | null = null;
     countries = signal<{ name: string; code: string }[]>([
         { name: 'Afghanistan', code: 'AF' },
         { name: 'Åland Islands', code: 'AX' },
