@@ -18,7 +18,7 @@ This plan outlines the refactoring of the application's color configuration to a
 ## Phase 3: Refactor Service and CSS Audit
 - [x] Task: Update `color-config.service.ts` to use `DEFAULT_COLOR_CONFIG` from constants f24bbbc
 - [x] Task: Implement one-time `localStorage` reset logic in `ColorConfigService` to ensure compatibility f24bbbc
-- [~] Task: Audit `src/styles.css` and `src/app/app.css` for hardcoded colors and replace with tokens or CSS variables where appropriate
+- [x] Task: Audit `src/styles.css` and `src/app/app.css` for hardcoded colors and replace with tokens or CSS variables where appropriate f24bbbc
 - [ ] Task: Conductor - User Manual Verification 'Refactor Service and CSS Audit' (Protocol in workflow.md)
 
 ## Phase 4: Final Verification and Documentation
