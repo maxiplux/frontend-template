@@ -28,6 +28,6 @@ Standardize the common UI components in the `shared` directory.
 ## Phase 3: Final Integration and Documentation
 Ensure everything is correctly linked and documented.
 
-- [ ] Task: Update public API exports in `index.ts` files
+- [x] Task: Update public API exports in `index.ts` files 77d3adf
 - [ ] Task: Verify JSDoc documentation across all standardized files
 - [ ] Task: Conductor - User Manual Verification 'Final Integration and Documentation' (Protocol in workflow.md)
