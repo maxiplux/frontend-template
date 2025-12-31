@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, effect, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export interface ColorPalette {
   primary: string;
@@ -21,9 +22,20 @@ const DEFAULT_CONFIG: ColorConfig = {
   },
 };
 
+const STORAGE_KEY = 'color-config';
+
 @Injectable({ providedIn: 'root' })
 export class ColorConfigService {
-  readonly config = signal<ColorConfig>(DEFAULT_CONFIG);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+  readonly config = signal<ColorConfig>(this.getInitialConfig());
+
+  constructor() {
+    effect(() => {
+      this.saveConfig(this.config());
+    });
+  }
 
   updateColor(mode: 'light' | 'dark', type: keyof ColorPalette, value: string): void {
     this.config.update((current) => ({
@@ -41,5 +53,28 @@ export class ColorConfigService {
 
   getDefaultConfig(): ColorConfig {
     return DEFAULT_CONFIG;
+  }
+
+  private getInitialConfig(): ColorConfig {
+    if (!this.isBrowser) {
+      return DEFAULT_CONFIG;
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse color config from localStorage', e);
+        return DEFAULT_CONFIG;
+      }
+    }
+    return DEFAULT_CONFIG;
+  }
+
+  private saveConfig(config: ColorConfig): void {
+    if (this.isBrowser) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+    }
   }
 }
