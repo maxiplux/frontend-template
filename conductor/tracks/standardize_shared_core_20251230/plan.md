@@ -9,7 +9,7 @@ Standardize the foundation services and guards in the `core` directory.
 - [x] Task: Standardize `UserService` with Signals 41ec948
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Service
-- [ ] Task: Standardize `AuthService` and `AuthGuard`
+- [x] Task: Standardize `AuthService` and `AuthGuard` 05d79d6
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Service and Guard
 - [ ] Task: Conductor - User Manual Verification 'Core Service Standardization' (Protocol in workflow.md)
