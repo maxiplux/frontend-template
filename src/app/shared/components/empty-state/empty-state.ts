@@ -17,3 +17,6 @@ export class EmptyStateComponent {
   /** An optional descriptive message */
   readonly message = input<string>();
 }
+
+// Export with shorter name for convenience
+export { EmptyStateComponent as EmptyState };

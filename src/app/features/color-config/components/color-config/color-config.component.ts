@@ -30,4 +30,23 @@ export class ColorConfigComponent {
   resetToDefaults(): void {
     this.colorConfigService.resetToDefaults();
   }
+
+  exportConfig(): void {
+    const blob = this.colorConfigService.exportConfig();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `theme-config-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  async onFileSelected(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      await this.colorConfigService.importConfig(file);
+      input.value = ''; // Reset input
+    }
+  }
 }

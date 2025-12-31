@@ -15,3 +15,6 @@ export class PageHeaderComponent {
   /** An optional description or subtitle */
   readonly description = input<string>();
 }
+
+// Export with shorter name for convenience
+export { PageHeaderComponent as PageHeader };
