@@ -94,4 +94,12 @@ describe('ColorConfigService', () => {
     const defaultConfig = newService.getDefaultConfig();
     expect(newService.config()).toEqual(defaultConfig);
   });
+
+  it('should export config as a JSON blob', () => {
+    // We'll verify that it returns a Blob with correct content
+    // In a real environment, it would trigger a download
+    const blob = service.exportConfig();
+    expect(blob).toBeInstanceOf(Blob);
+    expect(blob.type).toBe('application/json');
+  });
 });

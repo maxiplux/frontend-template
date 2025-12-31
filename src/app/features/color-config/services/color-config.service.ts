@@ -64,6 +64,12 @@ export class ColorConfigService {
     return DEFAULT_CONFIG;
   }
 
+  exportConfig(): Blob {
+    const config = this.config();
+    const json = JSON.stringify(config, null, 2);
+    return new Blob([json], { type: 'application/json' });
+  }
+
   private getInitialConfig(): ColorConfig {
     if (!this.isBrowser) {
       return DEFAULT_CONFIG;
