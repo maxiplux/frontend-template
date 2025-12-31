@@ -1,0 +1,77 @@
+<div class="p-6 bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-sm">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-xl font-semibold text-[var(--text)] m-0">Color Configuration</h2>
+    <button 
+      pButton 
+      type="button" 
+      label="Reset to Defaults" 
+      icon="pi pi-refresh" 
+      class="reset-btn p-button-outlined p-button-secondary p-button-sm"
+      (click)="resetToDefaults()">
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Light Mode Panel -->
+    <div class="theme-panel space-y-4 p-4 border border-[var(--border)] rounded-lg">
+      <div class="flex items-center gap-2 mb-2">
+        <i class="pi pi-sun text-yellow-500"></i>
+        <h3 class="text-lg font-medium text-[var(--text)] m-0">Light Mode</h3>
+      </div>
+      
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Primary (Accent)</label>
+          <p-colorPicker [ngModel]="config().light.primary" (ngModelChange)="onColorChange('light', 'primary', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Surface (Background)</label>
+          <p-colorPicker [ngModel]="config().light.surface" (ngModelChange)="onColorChange('light', 'surface', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Text</label>
+          <p-colorPicker [ngModel]="config().light.text" (ngModelChange)="onColorChange('light', 'text', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Muted</label>
+          <p-colorPicker [ngModel]="config().light.muted" (ngModelChange)="onColorChange('light', 'muted', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Border</label>
+          <p-colorPicker [ngModel]="config().light.border" (ngModelChange)="onColorChange('light', 'border', $event)"></p-colorPicker>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark Mode Panel -->
+    <div class="theme-panel space-y-4 p-4 border border-[var(--border)] rounded-lg">
+      <div class="flex items-center gap-2 mb-2">
+        <i class="pi pi-moon text-indigo-400"></i>
+        <h3 class="text-lg font-medium text-[var(--text)] m-0">Dark Mode</h3>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Primary (Accent)</label>
+          <p-colorPicker [ngModel]="config().dark.primary" (ngModelChange)="onColorChange('dark', 'primary', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Surface (Background)</label>
+          <p-colorPicker [ngModel]="config().dark.surface" (ngModelChange)="onColorChange('dark', 'surface', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Text</label>
+          <p-colorPicker [ngModel]="config().dark.text" (ngModelChange)="onColorChange('dark', 'text', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Muted</label>
+          <p-colorPicker [ngModel]="config().dark.muted" (ngModelChange)="onColorChange('dark', 'muted', $event)"></p-colorPicker>
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="text-sm text-[var(--muted)]">Border</label>
+          <p-colorPicker [ngModel]="config().dark.border" (ngModelChange)="onColorChange('dark', 'border', $event)"></p-colorPicker>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
