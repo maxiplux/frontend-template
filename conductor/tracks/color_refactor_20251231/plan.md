@@ -1,0 +1,28 @@
+# Plan: Color Configuration Refactoring
+
+This plan outlines the refactoring of the application's color configuration to a single source of truth.
+
+## Phase 1: Shared Color Constants
+- [x] Task: Create `theme.types.ts` in `src/app/features/color-config/constants/` with interfaces for ColorConfig and Palettes 60a6c9a
+- [x] Task: Create `color-tokens.ts` in `src/app/features/color-config/constants/` with primitive SLATE, SKY, and ORANGE palettes 60a6c9a
+- [x] Task: Create `semantic-colors.ts` in `src/app/features/color-config/constants/` mapping primitives to semantic roles and defining `DEFAULT_COLOR_CONFIG` 60a6c9a
+- [x] Task: Create `index.ts` in `src/app/features/color-config/constants/` for barrel exports 60a6c9a
+- [ ] Task: Conductor - User Manual Verification 'Shared Color Constants' (Protocol in workflow.md)
+
+## Phase 2: Refactor PrimeNG Integration
+- [ ] Task: Update `src/app/app.config.ts` to import tokens from the new constants directory
+- [ ] Task: Replace all hardcoded hex values in `PrimeNG` preset with the imported tokens
+- [ ] Task: Verify application boots and PrimeNG components render with correct colors
+- [ ] Task: Conductor - User Manual Verification 'Refactor PrimeNG Integration' (Protocol in workflow.md)
+
+## Phase 3: Refactor Service and CSS Audit
+- [ ] Task: Update `color-config.service.ts` to use `DEFAULT_COLOR_CONFIG` from constants
+- [ ] Task: Implement one-time `localStorage` reset logic in `ColorConfigService` to ensure compatibility
+- [ ] Task: Audit `src/styles.css` and `src/app/app.css` for hardcoded colors and replace with tokens or CSS variables where appropriate
+- [ ] Task: Conductor - User Manual Verification 'Refactor Service and CSS Audit' (Protocol in workflow.md)
+
+## Phase 4: Final Verification and Documentation
+- [ ] Task: Run full test suite and ensure >80% coverage for the refactored service
+- [ ] Task: Update project documentation (if any) regarding the new color system architecture
+- [ ] Task: Remove any orphaned color definitions or unused constants
+- [ ] Task: Conductor - User Manual Verification 'Final Verification and Documentation' (Protocol in workflow.md)
