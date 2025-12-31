@@ -16,10 +16,7 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
   selector: 'app-team',
   templateUrl: './team.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  
   imports: [PageHeader, EmptyState, CommonModule, FormsModule, ButtonModule, FileUploadModule, InputGroupModule, InputGroupAddonModule, InputTextModule, SelectModule, TextareaModule, ToggleSwitchModule],
-
-
 })
 export class Team {
     checked: boolean = true;
