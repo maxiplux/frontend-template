@@ -3,7 +3,7 @@
 ## Phase 1: Core Service Standardization
 Standardize the foundation services and guards in the `core` directory.
 
-- [ ] Task: Standardize `ThemeService` with Signals
+- [x] Task: Standardize `ThemeService` with Signals 198c095
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Service
 - [ ] Task: Standardize `UserService` with Signals
