@@ -24,7 +24,7 @@ describe('ColorConfigComponent', () => {
       imports: [ColorConfigComponent],
       providers: [
         { provide: ColorConfigService, useValue: colorConfigServiceMock },
-        { provide: ThemeEngineService, useValue: {} } // Mocked as empty object, dependency only
+        { provide: ThemeEngineService, useValue: { someEngineProperty: true } }
       ]
     }).compileComponents();
 

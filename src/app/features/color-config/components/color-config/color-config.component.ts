@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ColorConfigService, ColorPalette } from '../../services/color-config.service';
+import { ThemeEngineService } from '../../services/theme-engine.service';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ColorConfigComponent {
   private readonly colorConfigService = inject(ColorConfigService);
+  private readonly themeEngineService = inject(ThemeEngineService); // Instantiates the engine for live preview
   
   readonly config = this.colorConfigService.config;
 
