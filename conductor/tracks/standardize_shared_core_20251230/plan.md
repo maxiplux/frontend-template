@@ -1,6 +1,6 @@
 # Track Plan: Standardize Shared Components and Core Patterns
 
-## Phase 1: Core Service Standardization
+## Phase 1: Core Service Standardization [checkpoint: d719290]
 Standardize the foundation services and guards in the `core` directory.
 
 - [x] Task: Standardize `ThemeService` with Signals 198c095
@@ -12,9 +12,9 @@ Standardize the foundation services and guards in the `core` directory.
 - [x] Task: Standardize `AuthService` and `AuthGuard` 05d79d6
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Service and Guard
-- [ ] Task: Conductor - User Manual Verification 'Core Service Standardization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Core Service Standardization' (Protocol in workflow.md) d719290
 
-## Phase 2: Shared Component Standardization
+## Phase 2: Shared Component Standardization [checkpoint: 5028b54]
 Standardize the common UI components in the `shared` directory.
 
 - [x] Task: Standardize `EmptyStateComponent` 8bc02e7
@@ -23,7 +23,7 @@ Standardize the common UI components in the `shared` directory.
 - [x] Task: Standardize `PageHeaderComponent` e46b817
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Component
-- [ ] Task: Conductor - User Manual Verification 'Shared Component Standardization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Shared Component Standardization' (Protocol in workflow.md) 5028b54
 
 ## Phase 3: Final Integration and Documentation
 Ensure everything is correctly linked and documented.
