@@ -10,9 +10,9 @@ This plan outlines the refactoring of the application's color configuration to a
 - [x] Task: Conductor - User Manual Verification 'Shared Color Constants' (Protocol in workflow.md) 3b36101
 
 ## Phase 2: Refactor PrimeNG Integration
-- [ ] Task: Update `src/app/app.config.ts` to import tokens from the new constants directory
-- [ ] Task: Replace all hardcoded hex values in `PrimeNG` preset with the imported tokens
-- [ ] Task: Verify application boots and PrimeNG components render with correct colors
+- [x] Task: Update `src/app/app.config.ts` to import tokens from the new constants directory d294e62
+- [x] Task: Replace all hardcoded hex values in `PrimeNG` preset with the imported tokens d294e62
+- [~] Task: Verify application boots and PrimeNG components render with correct colors
 - [ ] Task: Conductor - User Manual Verification 'Refactor PrimeNG Integration' (Protocol in workflow.md)
 
 ## Phase 3: Refactor Service and CSS Audit
