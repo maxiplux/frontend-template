@@ -6,7 +6,7 @@ Standardize the foundation services and guards in the `core` directory.
 - [x] Task: Standardize `ThemeService` with Signals 198c095
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Service
-- [ ] Task: Standardize `UserService` with Signals
+- [x] Task: Standardize `UserService` with Signals 41ec948
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Service
 - [ ] Task: Standardize `AuthService` and `AuthGuard`
