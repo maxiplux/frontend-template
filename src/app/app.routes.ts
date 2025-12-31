@@ -57,6 +57,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./features/settings/settings.routes').then((m) => m.SETTINGS_ROUTES),
       },
+      {
+        path: 'color-config',
+        loadChildren: () =>
+          import('./features/color-config/color-config.routes').then((m) => m.COLOR_CONFIG_ROUTES),
+      },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },
