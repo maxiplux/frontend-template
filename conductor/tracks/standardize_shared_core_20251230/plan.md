@@ -17,7 +17,7 @@ Standardize the foundation services and guards in the `core` directory.
 ## Phase 2: Shared Component Standardization
 Standardize the common UI components in the `shared` directory.
 
-- [ ] Task: Standardize `EmptyStateComponent`
+- [x] Task: Standardize `EmptyStateComponent` 8bc02e7
     - [ ] Write Tests (TDD)
     - [ ] Implement/Refactor Component
 - [ ] Task: Standardize `PageHeaderComponent`
