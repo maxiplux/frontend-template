@@ -4,6 +4,9 @@ import { isPlatformBrowser } from '@angular/common';
 export interface ColorPalette {
   primary: string;
   surface: string;
+  text: string;
+  muted: string;
+  border: string;
 }
 
 export interface ColorConfig {
@@ -13,12 +16,18 @@ export interface ColorConfig {
 
 const DEFAULT_CONFIG: ColorConfig = {
   light: {
-    primary: '#3B82F6', // Blue-500
-    surface: '#FFFFFF', // White
+    primary: '#0ea5e9', // --accent
+    surface: '#f8fafc', // --bg
+    text: '#0f172a',    // --text
+    muted: '#64748b',   // --muted
+    border: '#e2e8f0',  // --border
   },
   dark: {
-    primary: '#60A5FA', // Blue-400
-    surface: '#1F2937', // Gray-800
+    primary: '#38bdf8', // --accent
+    surface: '#0f172a', // --bg
+    text: '#f8fafc',    // --text
+    muted: '#94a3b8',   // --muted
+    border: '#334155',  // --border
   },
 };
 

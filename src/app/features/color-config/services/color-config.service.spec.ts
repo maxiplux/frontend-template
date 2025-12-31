@@ -59,8 +59,8 @@ describe('ColorConfigService', () => {
 
   it('should load config from localStorage on init', () => {
     const savedConfig: ColorConfig = {
-      light: { primary: '#aabbcc', surface: '#ffffff' },
-      dark: { primary: '#112233', surface: '#000000' }
+      light: { primary: '#aabbcc', surface: '#ffffff', text: '#000000', muted: '#666666', border: '#dddddd' },
+      dark: { primary: '#112233', surface: '#000000', text: '#ffffff', muted: '#999999', border: '#333333' }
     };
     store['color-config'] = JSON.stringify(savedConfig);
     
