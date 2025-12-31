@@ -1,10 +1,24 @@
-import { inject, Injectable, signal, PLATFORM_ID, effect, DestroyRef } from '@angular/core';
+import {
+  inject,
+  Injectable,
+  signal,
+  PLATFORM_ID,
+  effect,
+  DestroyRef,
+  computed,
+} from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
+/** Valid theme types */
 export type Theme = 'light' | 'dark';
 
+/** Key used for localStorage preference */
 const STORAGE_KEY = 'app-theme-preference';
 
+/**
+ * Service to manage the application's color theme (light/dark).
+ * Synchronizes with system preferences and persists user choice in localStorage.
+ */
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly document = inject(DOCUMENT);
@@ -12,11 +26,15 @@ export class ThemeService {
   private readonly isBrowser = isPlatformBrowser(this.platformId);
   private readonly destroyRef = inject(DestroyRef);
 
-  /** Current theme state */
+  /**
+   * The current theme state as a signal.
+   */
   readonly theme = signal<Theme>(this.getInitialTheme());
 
-  /** Whether dark mode is currently active */
-  readonly isDark = () => this.theme() === 'dark';
+  /**
+   * Computed signal that indicates if the dark theme is currently active.
+   */
+  readonly isDark = computed(() => this.theme() === 'dark');
 
   constructor() {
     // Sync theme changes to DOM and localStorage
@@ -44,16 +62,25 @@ export class ThemeService {
     }
   }
 
-  /** Toggle between light and dark themes */
+  /**
+   * Toggles the theme between 'light' and 'dark'.
+   */
   toggleTheme(): void {
     this.theme.update((current) => (current === 'dark' ? 'light' : 'dark'));
   }
 
-  /** Set a specific theme */
+  /**
+   * Sets the theme to a specific value.
+   * @param theme The theme to set ('light' or 'dark').
+   */
   setTheme(theme: Theme): void {
     this.theme.set(theme);
   }
 
+  /**
+   * Determines the initial theme based on saved preferences or system settings.
+   * @returns The initial theme.
+   */
   private getInitialTheme(): Theme {
     if (!this.isBrowser) {
       return 'light';
@@ -69,20 +96,32 @@ export class ThemeService {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
+  /**
+   * Retrieves the saved theme preference from localStorage.
+   * @returns The saved theme or null if not set.
+   */
   private getSavedPreference(): Theme | null {
-    if (!this.isBrowser) {
+    if (!this.isBrowser || typeof localStorage === 'undefined') {
       return null;
     }
     const saved = localStorage.getItem(STORAGE_KEY);
     return saved === 'dark' || saved === 'light' ? saved : null;
   }
 
+  /**
+   * Saves the theme preference to localStorage.
+   * @param theme The theme to save.
+   */
   private savePreference(theme: Theme): void {
-    if (this.isBrowser) {
+    if (this.isBrowser && typeof localStorage !== 'undefined') {
       localStorage.setItem(STORAGE_KEY, theme);
     }
   }
 
+  /**
+   * Applies the theme class to the document's root element.
+   * @param theme The theme to apply.
+   */
   private applyTheme(theme: Theme): void {
     const htmlElement = this.document.documentElement;
     if (theme === 'dark') {
