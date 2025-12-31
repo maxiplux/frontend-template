@@ -1,37 +1,12 @@
 import { Injectable, signal, effect, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ColorConfig, ColorPalette, DEFAULT_COLOR_CONFIG } from '../constants';
 
-export interface ColorPalette {
-  primary: string;
-  surface: string;
-  text: string;
-  muted: string;
-  border: string;
-}
-
-export interface ColorConfig {
-  light: ColorPalette;
-  dark: ColorPalette;
-}
-
-const DEFAULT_CONFIG: ColorConfig = {
-  light: {
-    primary: '#0ea5e9', // --accent
-    surface: '#f8fafc', // --bg
-    text: '#0f172a',    // --text
-    muted: '#64748b',   // --muted
-    border: '#e2e8f0',  // --border
-  },
-  dark: {
-    primary: '#38bdf8', // --accent
-    surface: '#0f172a', // --bg
-    text: '#f8fafc',    // --text
-    muted: '#94a3b8',   // --muted
-    border: '#334155',  // --border
-  },
-};
+export type { ColorConfig, ColorPalette }; // Re-export for compatibility
 
 const STORAGE_KEY = 'color-config';
+const VERSION_KEY = 'color-config-version';
+const CURRENT_VERSION = '2.0.0'; // Incrementing version for refactor reset
 
 @Injectable({ providedIn: 'root' })
 export class ColorConfigService {
@@ -57,11 +32,11 @@ export class ColorConfigService {
   }
 
   resetToDefaults(): void {
-    this.config.set(DEFAULT_CONFIG);
+    this.config.set(DEFAULT_COLOR_CONFIG);
   }
 
   getDefaultConfig(): ColorConfig {
-    return DEFAULT_CONFIG;
+    return DEFAULT_COLOR_CONFIG;
   }
 
   exportConfig(): Blob {
@@ -113,19 +88,28 @@ export class ColorConfigService {
 
   private getInitialConfig(): ColorConfig {
     if (!this.isBrowser) {
-      return DEFAULT_CONFIG;
+      return DEFAULT_COLOR_CONFIG;
+    }
+
+    // Check version for one-time reset
+    const savedVersion = localStorage.getItem(VERSION_KEY);
+    if (savedVersion !== CURRENT_VERSION) {
+      localStorage.setItem(VERSION_KEY, CURRENT_VERSION);
+      // If version mismatch, we force a reset to new defaults once
+      return DEFAULT_COLOR_CONFIG;
     }
 
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        return this.isValidConfig(parsed) ? parsed : DEFAULT_COLOR_CONFIG;
       } catch (e) {
         console.error('Failed to parse color config from localStorage', e);
-        return DEFAULT_CONFIG;
+        return DEFAULT_COLOR_CONFIG;
       }
     }
-    return DEFAULT_CONFIG;
+    return DEFAULT_COLOR_CONFIG;
   }
 
   private saveConfig(config: ColorConfig): void {
