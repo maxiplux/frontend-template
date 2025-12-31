@@ -1,4 +1,141 @@
 <app-page-header title="Team" description="Manage your team members" />
-<div class="border-2 border-dashed border-[var(--border)] rounded-2xl bg-[var(--card)] flex-auto min-h-[400px]">
-  <app-empty-state icon="pi-users" title="No team members" message="Add team members to get started" />
+<div
+  class="border-2 border-dashed border-[var(--border)] rounded-2xl bg-[var(--card)] flex-auto min-h-[400px]"
+>
+  <div>
+    <div class="flex flex-col gap-2">
+      <div class="text-surface-900 dark:text-surface-0 font-medium text-xl">Profile</div>
+      <p class="m-0 p-0 text-surface-600 dark:text-surface-200 leading-normal">
+        This information shapes your public identity—choose wisely to reflect your best self while
+        maintaining privacy.
+      </p>
+    </div>
+    <div class="bg-surface-0 dark:bg-surface-900 p-7 shadow rounded-2xl mt-7">
+      <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-2">
+              <label for="username" class="font-medium text-surface-900 dark:text-surface-0"
+                >Username</label
+              >
+              <input pInputText id="username" type="text" class="w-full" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-2">
+              <label for="bio2" class="font-medium text-surface-900 dark:text-surface-0">Bio</label>
+              <textarea pInputTextarea id="bio2" rows="5" class="w-full"></textarea>
+            </div>
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-2">
+              <label for="avatar2" class="font-medium text-surface-900 dark:text-surface-0"
+                >Avatar</label
+              >
+              <div class="flex items-center gap-6">
+                <img
+                  src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/block.images/blocks/formlayout/form-avatar.jpg"
+                  class="w-14 h-14 rounded-lg"
+                />
+                <p-fileupload
+                  mode="basic"
+                  name="avatar"
+                  url="/api/upload"
+                  accept="image/*"
+                  [customUpload]="true"
+                  [auto]="true"
+                  [chooseButtonProps]="{ severity: 'secondary', outlined: true }"
+                  [maxFileSize]="1000000"
+                  chooseLabel="Upload"
+                  chooseIcon="pi pi-upload"
+                ></p-fileupload>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-7">
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-2">
+              <label for="email2" class="font-medium text-surface-900 dark:text-surface-0"
+                >Email</label
+              >
+              <input pInputText id="email2" type="text" class="w-full" />
+            </div>
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-2">
+              <label for="country2" class="font-medium text-surface-900 dark:text-surface-0"
+                >Country</label
+              >
+              <p-select
+                id="country2"
+                [(ngModel)]="selectedCountry"
+                [options]="countries()"
+                optionLabel="name"
+                [filter]="true"
+                filterBy="name"
+                [showClear]="true"
+                placeholder="Select a Country"
+                class="w-full"
+              >
+                <ng-template #selectedItem let-selectedOption>
+                  <div class="flex items-center">
+                    <div>{{ selectedOption.name }}</div>
+                  </div>
+                </ng-template>
+                <ng-template #item let-option>
+                  <div class="flex items-center">
+                    <div>{{ option.name }}</div>
+                  </div>
+                </ng-template>
+              </p-select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-7">
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-2">
+              <label for="city2" class="font-medium text-surface-900 dark:text-surface-0"
+                >City</label
+              >
+              <input pInputText id="city2" type="text" class="w-full" />
+            </div>
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-2">
+              <label for="state2" class="font-medium text-surface-900 dark:text-surface-0"
+                >State / Province</label
+              >
+              <input pInputText id="state2" type="text" class="w-full" />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-2">
+              <label for="website2" class="font-medium text-surface-900 dark:text-surface-0"
+                >Website</label
+              >
+              <p-inputgroup>
+                <p-inputgroup-addon>www</p-inputgroup-addon>
+                <input pInputText id="website2" type="text" class="w-full" />
+              </p-inputgroup>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-2">
+              <label for="privacy2" class="font-medium text-surface-900 dark:text-surface-0"
+                >Privacy</label
+              >
+              <div class="flex items-center gap-3">
+                <p-toggleswitch id="privacy2" [(ngModel)]="checked"></p-toggleswitch>
+                <span class="text-surface-800 dark:text-surface-200"
+                  >Share my data with contacts</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button pButton>
+            <span pButtonLabel>Save Changes</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
