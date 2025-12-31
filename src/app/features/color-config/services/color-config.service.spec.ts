@@ -102,4 +102,26 @@ describe('ColorConfigService', () => {
     expect(blob).toBeInstanceOf(Blob);
     expect(blob.type).toBe('application/json');
   });
+
+  it('should import valid config', async () => {
+    const newConfig: ColorConfig = {
+      light: { primary: '#111', surface: '#222', text: '#333', muted: '#444', border: '#555' },
+      dark: { primary: '#666', surface: '#777', text: '#888', muted: '#999', border: '#aaa' }
+    };
+    const blob = new Blob([JSON.stringify(newConfig)], { type: 'application/json' });
+    const file = new File([blob], 'config.json');
+
+    await service.importConfig(file);
+    expect(service.config()).toEqual(newConfig);
+  });
+
+  it('should reject invalid config during import', async () => {
+    const invalidConfig = { invalid: 'data' };
+    const blob = new Blob([JSON.stringify(invalidConfig)], { type: 'application/json' });
+    const file = new File([blob], 'config.json');
+
+    const result = await service.importConfig(file);
+    expect(result).toBe(false);
+    expect(service.config()).not.toEqual(invalidConfig);
+  });
 });

@@ -70,6 +70,47 @@ export class ColorConfigService {
     return new Blob([json], { type: 'application/json' });
   }
 
+  async importConfig(file: File): Promise<boolean> {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const text = e.target?.result as string;
+          const config = JSON.parse(text);
+          if (this.isValidConfig(config)) {
+            this.config.set(config);
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        } catch (e) {
+          console.error('Failed to import color config', e);
+          resolve(false);
+        }
+      };
+      reader.onerror = () => resolve(false);
+      reader.readAsText(file);
+    });
+  }
+
+  private isValidConfig(config: any): config is ColorConfig {
+    if (!config || typeof config !== 'object') return false;
+    if (!config.light || !config.dark) return false;
+    
+    const validatePalette = (palette: any) => {
+      return (
+        palette &&
+        typeof palette.primary === 'string' &&
+        typeof palette.surface === 'string' &&
+        typeof palette.text === 'string' &&
+        typeof palette.muted === 'string' &&
+        typeof palette.border === 'string'
+      );
+    };
+
+    return validatePalette(config.light) && validatePalette(config.dark);
+  }
+
   private getInitialConfig(): ColorConfig {
     if (!this.isBrowser) {
       return DEFAULT_CONFIG;
