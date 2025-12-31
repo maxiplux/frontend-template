@@ -21,7 +21,7 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 export class Team {
     checked: boolean = true;
     selectedCountry: any = null;
-    countries = signal([
+    countries = signal<{ name: string; code: string }[]>([
         { name: 'Afghanistan', code: 'AF' },
         { name: 'Åland Islands', code: 'AX' },
         { name: 'Albania', code: 'AL' },
